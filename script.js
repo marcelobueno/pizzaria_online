@@ -3,6 +3,8 @@ const cs = (el)=>document.querySelectorAll(el);
 
 let modalQt = 1;
 
+// Listagem das pizzas
+
 pizzaJson.map((item, index)=> {
     let pizzaItem =  c('.models .pizza-item'). cloneNode(true);
 
@@ -40,9 +42,20 @@ pizzaJson.map((item, index)=> {
         c('.pizzaWindowArea').style.opacity = 0;
         c('.pizzaWindowArea').style.display = 'flex';
 
-        setTimeout(()=>{c('.pizzaWindowArea').style.opacity = 1;}, 200)
+        setTimeout(()=>{c('.pizzaWindowArea').style.opacity = 1;}, 300)
     });
     
 
     c('.pizza-area').append(pizzaItem);
+});
+
+// Eventos do modal
+
+function closeModal() {
+    c('.pizzaWindowArea').style.opacity = 0;
+    setTimeout(()=>{c('.pizzaWindowArea').style.display = 'none';}, 500);
+}
+
+cs('.pizzaInfo--cancelButton, .pizzaInfo--cancelMobileButton').forEach((item)=>{
+    item.addEventListener('click', closeModal);
 });
